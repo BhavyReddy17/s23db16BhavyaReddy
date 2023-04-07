@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  - var pancakes=[{pancake_topping:"Honey",size:"Medium",cost:250},{pancake_topping:"Jelly",size:"Medium",cost:150},{pancake_topping:"Nutella",size:"Medium",cost:200}]
+  div(class="container-fluid")
+  div(class="row")
+   each i,index  in pancakes
+    div(class="col-sm-2" onclick =`pancakes(${index})`) #{i.pancake_topping}, #{i.size}, #{i.cost}
+     script.
+        function pancakes(i){
+            alert(`you selected pancakes ${i+1}`)
+        }
