@@ -1,6 +1,9 @@
 extends layout
 block content
   h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
   - let pancakeid = toShow._id
   - let pancake_topping = toShow.pancake_topping
   - let cost = toShow.cost

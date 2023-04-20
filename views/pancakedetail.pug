@@ -1,20 +1,23 @@
 extends layout
 block content
  h1= title
- - let pancakeid = toShow._id
- - let pancake_topping = toShow.pancake_topping
- - let pancakecost = toShow.cost
- - let pancakesize = toShow.size
- div
- div.row
- div(class='pancakesAttr mr-3') pancake ID is:
- div  #{pancakeid}
- div.row
- div(class='pancakesAttr mr-3') pancake Type is:
- div #{pancake_topping}
- div.row
- div(class='pancakesAttr mr-3') pancake Size is:
- div #{pancakesize}
- div.row
- div(class='pancakesAttr mr-3') pancake Cost is:
- div #{pancakecost}
+ if (toShow == null)
+    h2 No instance to delete
+ else
+    - let pancakeid = toShow._id
+    - let pancake_topping = toShow.pancake_topping
+    - let pancakecost = toShow.cost
+    - let pancakesize = toShow.size
+    div
+    div.row
+    div(class='pancakesAttr mr-3') pancake ID is:
+    div  #{pancakeid}
+    div.row
+    div(class='pancakesAttr mr-3') pancake Type is:
+    div #{pancake_topping}
+    div.row
+    div(class='pancakesAttr mr-3') pancake Size is:
+    div #{pancakesize}
+    div.row
+    div(class='pancakesAttr mr-3') pancake Cost is:
+    div #{pancakecost}
