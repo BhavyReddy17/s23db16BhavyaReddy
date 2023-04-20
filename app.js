@@ -58,10 +58,10 @@ app.use(function(err, req, res, next) {
 async function recreateDB(){
 // Delete everything
 await pancakes.deleteMany();
-let instance1 = new pancakes({pancakes_type:"Jelly", size:'Medium',cost:150});
-let instance2 = new pancakes({pancakes_type:"Honey", size:'Medium',cost:250});
-let instance3 = new pancakes({pancakes_type:"Nutella", size:'Medium',cost:200});
-instance1.save().then(doc=>{console.log("First object saved")}).catch(err=>{console.error(err)});
+let instance1 = new pancakes({pancake_topping:"Jelly", size:'Medium',cost:150});
+let instance2 = new pancakes({pancake_topping:"Honey", size:'Medium',cost:250});
+let instance3 = new pancakes({pancake_topping:"Nutella", size:'Medium',cost:200});
+instance1.save().then(doc=>{console.log("First object saved"+doc)}).catch(err=>{console.error(err)});
 instance2.save().then(doc=>{console.log("Second object saved")}).catch(err=>{console.error(err)});
 instance3.save().then(doc=>{console.log("Third object saved")}).catch(err=>{console.error(err)});
 }

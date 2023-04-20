@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1= title
+
+  form(id='pancakeForm', action="/resource/pancakes", method="POST")
+    div.form-group
+      label.pancakesAttr(for='pancake_topping') pancake topping
+      input#pancake_topping(type='text', name='pancake_topping')
+    div.form-group
+      label.pancakesAttr(for='size') pancake size
+      input#size(type='text', name='size')
+    div.form-group
+      label.pancakesAttr(for='cost') pancake cost
+      input#cost(type='number', name='cost')
+    input(type="submit")
+
+  script.
+    document.forms['pancakeForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      console.log('submitted');
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+      }).catch((error) => {
+        alert("Save failed " + error )
+      });
+    });

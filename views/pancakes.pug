@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var pancakes=[{pancake_topping:"Honey",size:"Medium",cost:250},{pancake_topping:"Jelly",size:"Medium",cost:150},{pancake_topping:"Nutella",size:"Medium",cost:200}]
+  - var pancakes = results
   div(class="container-fluid")
   div(class="row")
    each i,index  in pancakes

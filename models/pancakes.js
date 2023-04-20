@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const pancakesSchema = mongoose.Schema({
-    pancakes_type: String,
+pancake_topping: String,
 size: String,
 cost: Number
 })

@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let pancakeid = toShow._id
+    - let pancake_topping = toShow.pancake_topping
+    - let cost = toShow.cost
+    - let size = toShow.size
+    - let actionid = "/resource/pancakes/" + pancakeid
+    script let actionid= "#{actionid}"
+      
+    div
+      div.row
+        div(class='pancakeAttr mr-3') pancake ID is:
+        div #{pancakeid}
+      div.row
+        div(class='pancakeAttr mr-3') pancake topping is:
+        div #{pancake_topping}
+      div.row
+        div(class='pancakeAttr mr-3') pancake Size is:
+        div #{size}
+      div.row
+        div(class='pancakeAttr mr-3') pancake Cost is:
+        div #{cost}
+      button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
+      button(class="btn btn-secondary m-2" onclick="cancel()") Cancel
+    script.
+      function cancel() {
+        // Go back to the home page for the costume collection
+        window.location.href='/pancakes'
+      }
+   
+
+    script.
+      function deleteOnid() {
+        console.log("starting delete")
+        fetch(actionid, {
+          method: 'DELETE'  
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Delete succeeded")
+          window.location.href='/pancakecakes'
+        }).catch((error) => {
+          alert("Delete failed " + error )
+        });
+      }
